@@ -10,7 +10,7 @@ searchPackage("jquery").then((results) => {
 });
 
 // Get the list of packages
-listPackages().then((results) => {
+listPackages(20).then((results) => {
     console.log("List of packages: " + results.length)
 
     // Iterate over the results
