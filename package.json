@@ -14,10 +14,7 @@
 		"type": "git",
 		"url": "git://github.com/BaseMax/bower-package-nodejs.git"
 	},
-	"dependencies": {
-		"bower-api": "^0.0.1",
-		"bower-registry-client": "^1.0.0"
-	},
+	"dependencies": {},
 	"engines": {
 		"node": ">=0.8"
 	},
