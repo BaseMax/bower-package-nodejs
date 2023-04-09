@@ -28,9 +28,8 @@ function listPackages(chunkSize = Infinity) {
 			} else {
 				// Split the cached packages into chunks
 				const chunks = [];
-				for (let i = 0; i < cachedPackages.length; i += chunkSize) {
+				for (let i = 0; i < cachedPackages.length; i += chunkSize)
 					chunks.push(cachedPackages.slice(i, i + chunkSize));
-				}
 				resolve(chunks);
 			}
 		} else {
@@ -44,9 +43,8 @@ function listPackages(chunkSize = Infinity) {
 					} else {
 						// Split the packages into chunks
 						const chunks = [];
-						for (let i = 0; i < packages.length; i += chunkSize) {
+						for (let i = 0; i < packages.length; i += chunkSize)
 							chunks.push(packages.slice(i, i + chunkSize));
-						}
 						resolve(chunks);
 					}
 				})
