@@ -10,14 +10,14 @@ searchPackage("jquery").then((results) => {
 });
 
 // Get the list of all packages
-listPackages().then((packages) => {
-    console.log("List of packages: " + packages.length);
+// listPackages().then((packages) => {
+//     console.log("List of packages: " + packages.length);
 
-    // Iterate over the results
-    packages.forEach((package) => {
-        console.log(package);
-    });
-});
+//     // Iterate over the results
+//     packages.forEach((package) => {
+//         console.log(package);
+//     });
+// });
 
 // Get the list of packages
 listPackages(20).then((chunks) => {
@@ -25,10 +25,11 @@ listPackages(20).then((chunks) => {
     console.log("List of packages: " + chunks.reduce((sum, chunk) => sum + chunk.length, 0));
 
     // Iterate over the results
-    results.forEach((chunk) => {
-        chunk.forEach((package) => {
-            console.log(package);
-        });
+    chunks.forEach((chunk) => {
+        console.log(chunk);
+        // chunk.forEach((package) => {
+        //     console.log(package);
+        // });
     });
 });
 
