@@ -24,9 +24,11 @@ listPackages(20).then((chunks) => {
 	console.log("List of chunks: " + chunks.length)
 	console.log("List of packages: " + chunks.reduce((sum, chunk) => sum + chunk.length, 0));
 
-	// Iterate over the results
+	// Iterate over the chunks
 	chunks.forEach((chunk) => {
 		console.log(chunk);
+
+		// Iterate over the packages in the chunk
 		// chunk.forEach((package) => {
 		//     console.log(package);
 		// });
