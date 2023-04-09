@@ -1,52 +1,38 @@
 const axios = require('axios');
 
+const SEARCH_ENDPOINT = 'https://bower.herokuapp.com/packages/search/';
+const PACKAGES_ENDPOINT = 'https://bower.herokuapp.com/packages/';
+
+// Send a GET request to the specified endpoint
+function sendRequest(url) {
+  return axios.get(url)
+    .then(response => response.data)
+    .catch(error => Promise.reject(error));
+}
+
 // Search for a package
 function searchPackage(packageName) {
-  return new Promise((resolve, reject) => {
-    // Sending a request to the Bower registry
-    axios.get(`https://bower.herokuapp.com/packages/search/${packageName}`)
-      .then(response => {
-        const results = response.data;
-        resolve(results);
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
+  const url = `${SEARCH_ENDPOINT}${packageName}`;
+  return sendRequest(url);
 }
 
 // Get a list of packages
 function listPackages() {
-  return new Promise((resolve, reject) => {
-    // Sending a request to the Bower registry
-    axios.get('https://bower.herokuapp.com/packages')
-      .then(response => {
-        const packages = response.data;
-        resolve(packages);
-      })
-      .catch(error => {
-        reject(error);
-      });
-  });
+  return sendRequest(PACKAGES_ENDPOINT);
 }
 
 // Check if a package exists
 function packageExists(packageName) {
-  return new Promise((resolve, reject) => {
-    // Sending a request to the Bower registry
-    axios.get(`https://bower.herokuapp.com/packages/${packageName}`)
-      .then(response => {
-        const exists = response.status === 200;
-        resolve(exists);
-      })
-      .catch(error => {
-        if (error.response && error.response.status === 404) {
-          resolve(false);
-        } else {
-          reject(error);
-        }
-      });
-  });
+  const url = `${PACKAGES_ENDPOINT}${packageName}`;
+  return sendRequest(url)
+    .then(() => true)
+    .catch(error => {
+      if (error.response && error.response.status === 404) {
+        return false;
+      } else {
+        return Promise.reject(error);
+      }
+    });
 }
 
 module.exports = {
