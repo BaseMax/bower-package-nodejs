@@ -10,14 +10,14 @@ searchPackage("jquery").then((results) => {
 });
 
 // Get the list of all packages
-// listPackages().then((packages) => {
-//     console.log("List of packages: " + packages.length);
+listPackages().then((packages) => {
+    console.log("List of packages: " + packages.length);
 
-//     // Iterate over the results
-//     packages.forEach((package) => {
-//         console.log(package);
-//     });
-// });
+    // Iterate over the results
+    packages.forEach((package) => {
+        console.log(package);
+    });
+});
 
 // Get the list of packages
 listPackages(20).then((chunks) => {
