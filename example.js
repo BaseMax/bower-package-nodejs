@@ -9,17 +9,30 @@ searchPackage("jquery").then((results) => {
     });
 });
 
-// Get the list of packages
-listPackages(20).then((results) => {
-    console.log("List of packages: " + results.length)
+// Get the list of all packages
+listPackages().then((packages) => {
+    console.log("List of packages: " + packages.length);
 
     // Iterate over the results
-    results.forEach((result) => {
-        console.log(result);
+    packages.forEach((package) => {
+        console.log(package);
+    });
+});
+
+// Get the list of packages
+listPackages(20).then((chunks) => {
+    console.log("List of chunks: " + chunks.length)
+    console.log("List of packages: " + chunks.reduce((sum, chunk) => sum + chunk.length, 0));
+
+    // Iterate over the results
+    results.forEach((chunk) => {
+        chunk.forEach((package) => {
+            console.log(package);
+        });
     });
 });
 
 // Check a package exists
-packageExists("jquery").then((results) => {
-    console.log("Package exists: " + results)
+packageExists("jquery").then((exists) => {
+    console.log("Package exists: " + exists)
 });
